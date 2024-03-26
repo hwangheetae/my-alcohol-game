@@ -3,12 +3,16 @@ import Button from "./Button";
 import Counter from "./Counter";
 import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
+import Description from "./Description";
+
 function App() {
   const [usedCards, setUsedCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(0);
   const [count, setCount] = useState(0);
   const [restart, setRestart] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
   const totalCards = 52;
 
   useEffect(() => {
@@ -44,8 +48,12 @@ function App() {
     setCurrentCard(randomIndex);
   };
 
-  const popUpModal = () => {};
-  console.log(gameEnd);
+  const handlePopupMessage = () => {
+    setModalOpen(!modalOpen);
+  };
+
+  const customModalStyles = {}; // 커스텀 모달 스타일을 추가할 수 있습니다.
+
   return (
     <div className="App">
       <header>
@@ -65,6 +73,18 @@ function App() {
           <Counter count={count} />
           <Button onClick={drawCard} value="다음" />
           <Button onClick={getRestart} value=" 다시하기" />
+          <Button onClick={handlePopupMessage} value="게임 방법" />
+          {/* 모달 컴포넌트 */}
+          <ReactModal
+            isOpen={modalOpen}
+            onRequestClose={() => setModalOpen(false)} // onRequestClose에 함수 전달
+            style={customModalStyles}
+            ariaHideApp={false}
+            contentLabel="Description"
+            shouldCloseOnOverlayClick={true}
+          >
+            <Description />
+          </ReactModal>
         </body>
       </div>
     </div>
