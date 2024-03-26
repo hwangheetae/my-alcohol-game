@@ -6,7 +6,7 @@ function App() {
   const [usedCards, setUsedCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(0);
   const [count, setCount] = useState(0);
-
+  const [restart, setRestart] = useState(false);
   const getRandomInt = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -23,20 +23,28 @@ function App() {
   const drawCard = () => {
     if (count === totalCards) return;
     let randomIndex = getRandomInt(1, totalCards);
+
     while (usedCards.includes(randomIndex)) {
       randomIndex = getRandomInt(1, totalCards);
     }
-    console.log(randomIndex);
+
     setUsedCards([...usedCards, randomIndex]);
     setCount((prev) => prev + 1);
     setCurrentCard(randomIndex);
   };
-
+  console.log(currentCard);
+  const getRestart = () => {
+    setRestart(true);
+    setCount(0);
+    setCurrentCard(0);
+    setUsedCards([]);
+  };
   return (
     <div className="App">
       <CardContianer currentCard={currentCard} />
-      <Button onClick={drawCard} />
       <Counter count={count} />
+      <Button onClick={drawCard} value="다음" />
+      <Button onClick={getRestart} value=" 다시하기" />
     </div>
   );
 }
