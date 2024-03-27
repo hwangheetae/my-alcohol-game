@@ -8,8 +8,13 @@ function CardContianer({ currentCard }) {
     address = cardMapping[0];
   }
   return (
-    <div className="cardContainer">
-      <img src={address} alt={address}></img>
+    <div className="flex justify-center items-center">
+      <img
+        src={address}
+        alt={address}
+        className="max-w-full max-h-full"
+        style={{ maxWidth: "600px", maxHeight: "400px" }}
+      ></img>
     </div>
   );
 }
