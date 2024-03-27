@@ -4,19 +4,19 @@ import Counter from "./Counter";
 import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import Description from "./Description";
+import Title from "./Title";
 
 function App() {
   const [usedCards, setUsedCards] = useState([]);
   const [currentCard, setCurrentCard] = useState(0);
   const [count, setCount] = useState(0);
-  const [restart, setRestart] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
   const totalCards = 52;
 
   useEffect(() => {
-    if (count === 52) {
+    if (count === totalCards) {
       setGameEnd(true);
     }
   }, [count]);
@@ -28,7 +28,6 @@ function App() {
   };
 
   const getRestart = () => {
-    setRestart(true);
     setCount(0);
     setCurrentCard(0);
     setUsedCards([]);
@@ -52,15 +51,9 @@ function App() {
     setModalOpen(!modalOpen);
   };
 
-  const customModalStyles = {}; // 커스텀 모달 스타일을 추가할 수 있습니다.
-
   return (
     <div className="App">
-      <header>
-        <h1>
-          술게임을 알게되었는데 어플이 앱스토어에만 있어서 만들게 된 술게임
-        </h1>
-      </header>
+      <Title />
       <div>
         <body>
           {gameEnd ? (
@@ -74,11 +67,9 @@ function App() {
           <Button onClick={drawCard} value="다음" />
           <Button onClick={getRestart} value=" 다시하기" />
           <Button onClick={handlePopupMessage} value="게임 방법" />
-          {/* 모달 컴포넌트 */}
           <ReactModal
             isOpen={modalOpen}
-            onRequestClose={() => setModalOpen(false)} // onRequestClose에 함수 전달
-            style={customModalStyles}
+            onRequestClose={() => setModalOpen(false)}
             ariaHideApp={false}
             contentLabel="Description"
             shouldCloseOnOverlayClick={true}
