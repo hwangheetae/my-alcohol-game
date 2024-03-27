@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/my-alcohol-game/static/css/main.741abde5.css",
+    "main.js": "/my-alcohol-game/static/js/main.9e6c3b64.js",
+    "static/js/453.706a968a.chunk.js": "/my-alcohol-game/static/js/453.706a968a.chunk.js",
+    "index.html": "/my-alcohol-game/index.html",
+    "main.741abde5.css.map": "/my-alcohol-game/static/css/main.741abde5.css.map",
+    "main.9e6c3b64.js.map": "/my-alcohol-game/static/js/main.9e6c3b64.js.map",
+    "453.706a968a.chunk.js.map": "/my-alcohol-game/static/js/453.706a968a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.741abde5.css",
+    "static/js/main.9e6c3b64.js"
+  ]
+}
